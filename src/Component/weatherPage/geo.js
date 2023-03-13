@@ -5,7 +5,7 @@ const Geo = () => {
   var projectStyle = {
     width: 300,
     height: 300,
-    border: 10,backgroundColor: "lightblue",
+    border: 10,backgroundColor: "blue",
   };
   return (
     <div style={projectStyle}>
