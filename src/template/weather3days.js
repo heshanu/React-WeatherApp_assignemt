@@ -1,13 +1,11 @@
 import React from "react";
 
-const Weather3days = ({ data }) => {
+const Weather3days = ({data}) => {
   const { lan, log, location } = data;
   return (
     <>
       <h1>Weather3days</h1>
-      {lan}
-      {log}
-      {/*data &&
+      {data &&
         data.map((index, d) => {
           return (
             <>
@@ -18,7 +16,7 @@ const Weather3days = ({ data }) => {
               </div>
             </>
           );
-        })*/}
+        })}
     </>
   );
 };
