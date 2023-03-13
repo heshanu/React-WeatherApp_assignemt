@@ -1,12 +1,18 @@
-import React from 'react';
-import cordinate from './cordinate';
+import React from "react";
+import cordinate from "./cordinate";
 
-const Geo=()=>{
-    return(
-    <div>
-        <h1>Geo Locations</h1>
-        <cordinate />
-    </div>)
-}
+const Geo = () => {
+  var projectStyle = {
+    width: 300,
+    height: 300,
+    border: 10,backgroundColor: "lightblue",
+  };
+  return (
+    <div style={projectStyle}>
+      <h1>Geo Locations</h1>
+      <cordinate />
+    </div>
+  );
+};
 
 export default Geo;
