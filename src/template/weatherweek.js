@@ -1,5 +1,5 @@
 import React from "react";
-import fetchData from "./fetchData";
+import fetchData from "../Component/weatherPage/fetchData";
 
 const Weatherweek = ({ data }) => {
   const { lan, log, location } = data;
