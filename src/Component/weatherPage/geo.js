@@ -90,7 +90,7 @@ const Geo = () => {
           </div>
           <button type="submit">Search Weather</button>
         </form>
-        <Weather3days data={fetchData(latitude, longtitude)} />
+
         {/*data.map((index, d) => {
           return (
             <div key={d} style={projectStyle}>
@@ -99,6 +99,7 @@ const Geo = () => {
           );
         })*/}
       </article>
+      <Weather3days data={data}/>
     </>
   );
 };
