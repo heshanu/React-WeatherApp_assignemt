@@ -4,6 +4,8 @@ const Geo=()=>{
     return(
     <div>
         <h1>Geo Locations</h1>
+        
+
     </div>)
 }
 
