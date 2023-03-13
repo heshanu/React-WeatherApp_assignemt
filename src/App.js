@@ -1,5 +1,4 @@
 import "./App.css";
-import "./Component/geo";
 import Geo  from "./Component/weatherPage/geo";
 function App() {
   return (
