@@ -1,7 +1,6 @@
 import "./App.css";
 import "./Component/Geo";
-import Geo from "./Component/weatherPage/geo";
-
+import Geo  from "./Component/weatherPage/geo";
 function App() {
   return (
     <div className="App">
