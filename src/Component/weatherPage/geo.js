@@ -37,7 +37,6 @@ const Geo = () => {
   };
 
   useEffect(() => {
-    fetchData(latitude, longtitude);
     // const fetchData = async () => {
     //   // navigator.geolocation.getCurrentPosition(function (position) {
     //   //   setLatitude(position.coords.latitude);
