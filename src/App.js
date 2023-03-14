@@ -11,7 +11,7 @@ import Page404 from "./template/Page404";
 import LoginButton from "./template/login";
 import LogoutButton from "./template/logout";
 import Profile from "./template/profile";
-import Footer from "./template/footer";
+
 function App() {
   const { isAuthenticated, isLoading } = useAuth0();
 
@@ -36,7 +36,6 @@ function App() {
       <br />
       {isAuthenticated && <Geo />}
       <br/>
-      <Footer />
     </>
   );
 }
