@@ -1,14 +1,24 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import 'semantic-ui-css/semantic.min.css'
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-import 'semantic-ui-css/semantic.min.css'
-const root = ReactDOM.createRoot(document.getElementById('root'));
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "semantic-ui-css/semantic.min.css";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import "semantic-ui-css/semantic.min.css";
+import { Auth0Provider } from "@auth0/auth0-react";
+import 'bootstrap/dist/css/bootstrap.min.css';
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App />
+    <Auth0Provider
+      domain="dev-m6bi62a4ol6yhcx8.jp.auth0.com"
+      clientId="mNJIpXNPmi4RSIBgEY3k7kuePXaKTI1Y"
+      authorizationParams={{
+        redirect_uri: window.location.origin,
+      }}
+    >
+      <App />
+    </Auth0Provider>
   </React.StrictMode>
 );
 
