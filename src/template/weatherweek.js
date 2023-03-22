@@ -1,13 +1,9 @@
 import React from "react";
-import fetchData from "../Component/weatherPage/fetchData";
 
 const Weatherweek = ({ data }) => {
-  const { lan, log, location } = data;
   return (
     <>
       <h1>Weather Week</h1>
-      {lan}
-      {log}
       {/*data &&
         data.map((index, d) => {
           return (

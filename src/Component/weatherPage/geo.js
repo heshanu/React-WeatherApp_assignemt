@@ -1,34 +1,13 @@
 import React, { useState, useEffect } from "react";
-import fetchData from "./fetchData";
 import Weather3days from "../../template/weather3days";
 
 const Geo = () => {
   const [location, setLocation] = useState("");
-  const [latitude, setLatitude] = useState(6.9271);
-  const [longtitude, setLongtitude] = useState(79.8612);
   const [data, setData] = useState([]);
+  const [currentWeather, setCurrentWeather] = useState([]);
 
+  const url = `http://api.weatherapi.com/v1/current.json?key=61701315568d4faaa22163510231303&q=${location}&days=0`;
   // const url ="https://pro.openweathermap.org/data/2.5/forecast/hourly?lat=latitude&lon=longtitude&appid=process.env.REACT_APP_WEATHER_API_KEY";
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(location);
-    if (location) {
-      //const location = { location: location };
-
-      setLocation((l) => {
-        return [location];
-      });
-      setLatitude("");
-      setLongtitude("");
-    } else if (latitude && longtitude) {
-      setLatitude(latitude);
-      setLongtitude(longtitude);
-      console.log(latitude, longtitude);
-    } else {
-      alert("Please enter the location");
-    }
-  };
-
   var projectStyle = {
     width: 300,
     height: 300,
@@ -36,28 +15,30 @@ const Geo = () => {
     backgroundColor: "blue",
   };
 
-  useEffect(() => {
-    fetchData(latitude, longtitude);
-    // const fetchData = async () => {
-    //   // navigator.geolocation.getCurrentPosition(function (position) {
-    //   //   setLatitude(position.coords.latitude);
-    //   //   setLongtitude(position.coords.longitude);
-    //   // });
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setLocation(location);
+  };
 
-    //   await fetch(url)
-    //     .then((res) => res.json())
-    //     .then((result) => {
-    //       setData(result);
-    //       console.log(result);
-    //     });
-    // };
-    fetchData(latitude, longtitude);
-  }, [latitude, longtitude]);
+  useEffect(() => {
+    if (location) {
+      fetch(url)
+        .then((response) => response.json())
+        .then((data) => {
+          // console.log(data);
+          setData(data);
+          setCurrentWeather(data.current);
+        })
+        .catch((err) => {
+          console.log(err.message);
+        });
+    }
+  }, [url]);
 
   return (
     <>
       <article>
-        <form className="form" onSubmit={handleSubmit}>
+        <form className="form" onClick={handleSubmit}>
           <div className="form-control">
             <label htmlFor="location">Location:</label>
             <input
@@ -65,43 +46,24 @@ const Geo = () => {
               id="location"
               name="location"
               value={location}
-              onChange={(e) => setLocation(e.target.value)}
+              onChange={(e) => {
+                setLocation(e.target.value);
+              }}
             />
-          </div>
-          <div className="form-control">
-            <label htmlFor="lat">Latitude:</label>
-            <input
-              type="text"
-              id="Latitude"
-              name="Latitude"
-              value={latitude}
-              onChange={(e) => setLatitude(e.target.value)}
-            />
-          </div>
-          <div className="form-control">
-            <label htmlFor="location">longitude:</label>
-            <input
-              type="text"
-              id="longtitude"
-              name="longtitude"
-              value={longtitude}
-              onChange={(e) => setLongtitude(e.target.value)}
-            />
-          </div>
-          <button type="submit">Search Weather</button>
-        </form>
 
-        {/*data.map((index, d) => {
-          return (
-            <div key={d} style={projectStyle}>
-              <h1>{}</h1>
-            </div>
-          );
-        })*/}
+            {
+             currentWeather &&(currentWeather.map((m,index)=>{
+                return (
+                  <div key={index}>
+                    <h1>{m.temp_c}</h1>
+                  </div>
+                )
+              })
+            )}
+          </div>
+        </form>
       </article>
-      <Weather3days data={data}/>
     </>
   );
 };
-
 export default Geo;
