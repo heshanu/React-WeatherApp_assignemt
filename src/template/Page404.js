@@ -1,4 +1,5 @@
 import React from "react";
+import fetchData from "../Component/weatherPage/fetchData";
 
 const Page404 = () => {
   return (

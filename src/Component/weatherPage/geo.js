@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import fetchData from "./fetchData";
 import Weather3days from "../../template/weather3days";
 import Weatherweek from "../../template/weatherweek";
 
@@ -6,22 +7,14 @@ import db from "../../utils/weather4days.json";
 
 const Geo = () => {
   const [location, setLocation] = useState("");
-  
   const [data, setData] = useState([]);
 
   // const url ="https://pro.openweathermap.org/data/2.5/forecast/hourly?lat=latitude&lon=longtitude&appid=process.env.REACT_APP_WEATHER_API_KEY";
- 
-
   var projectStyle = {
     width: 300,
     height: 300,
     border: 10,
     backgroundColor: "blue",
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setLocation(location);
   };
 
   // useEffect(
@@ -132,4 +125,5 @@ const Geo = () => {
     </>
   );
 };
+
 export default Geo;
